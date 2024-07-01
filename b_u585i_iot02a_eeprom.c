@@ -154,6 +154,10 @@ int32_t BSP_EEPROM_WritePage(const uint32_t Instance, uint8_t *pBuffer, uint32_t
   }
   else
   {
+    /* Waiting for EEPROM internal write cycle duration (5 ms): max delay required by
+    the M24256 specification to ensure that the previous EEPROM access is finished */
+    HAL_Delay(5);
+
     if (BSP_EEPROM_IsDeviceReady(Instance) != BSP_ERROR_NONE)
     {
       ret = BSP_ERROR_COMPONENT_FAILURE;
@@ -431,6 +435,10 @@ static int32_t EEPROM_WriteBytes(const uint32_t Instance, uint8_t *pBuffer, uint
   }
   else
   {
+    /* Waiting for EEPROM internal write cycle duration (5 ms): max delay required by
+    the M24256 specification to ensure that the previous EEPROM access is finished */
+    HAL_Delay(5);
+    
     if (BSP_EEPROM_IsDeviceReady(Instance) != BSP_ERROR_NONE)
     {
       ret = BSP_ERROR_BUSY;

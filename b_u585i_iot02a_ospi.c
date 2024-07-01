@@ -1134,13 +1134,13 @@ int32_t BSP_OSPI_RAM_Init(uint32_t Instance)
   }
 
   /* Configure Read Latency and drive Strength */
-  if (APS6408_WriteReg(&hospi_ram[Instance], 0x00, *regW_MR0) != HAL_OK)
+  if (APS6408_WriteReg(&hospi_ram[Instance], 0x00, *regW_MR0) != APS6408_OK)
   {
     ret = BSP_ERROR_PERIPH_FAILURE;
   }
 
   /* Configure Burst Length */
-  if (APS6408_WriteReg(&hospi_ram[Instance], 0x08, *regW_MR8) != HAL_OK)
+  if (APS6408_WriteReg(&hospi_ram[Instance], 0x08, *regW_MR8) != APS6408_OK)
   {
     ret = BSP_ERROR_PERIPH_FAILURE;;
   }
